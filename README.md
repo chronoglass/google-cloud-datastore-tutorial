@@ -30,6 +30,9 @@ Particle](https://docs.particle.io/tutorials/topics/google-cloud-platform/#enabl
 For all required steps, check out [the full
 tutorial](https://docs.particle.io/tutorials/topics/google-cloud-platform/#storing-data-in-a-datastore-database)
 
+## In Progress ##
+Allow this to be run completely in the google cloud by editing the script so it can be run as a microservice
+
 ## Setup and configuration
 
 #### Clone the repository
