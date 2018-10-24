@@ -9,7 +9,6 @@
   "author": "Jeff Eiden",
   "license": "ISC",
   "dependencies": {
-    "colors": "^1.1.2",
     "google-cloud": "^0.40.0",
     "util": "^0.10.3"
   }
