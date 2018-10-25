@@ -30,8 +30,11 @@ Particle](https://docs.particle.io/tutorials/topics/google-cloud-platform/#enabl
 For all required steps, check out [the full
 tutorial](https://docs.particle.io/tutorials/topics/google-cloud-platform/#storing-data-in-a-datastore-database)
 
-## In Progress ##
-Allow this to be run completely in the google cloud by editing the script so it can be run as a microservice
+## After completing tutorial requirements ##
+1) Clone repository to your google app through the cloud shell.
+2) in the google cloud shell create a "cloudkey.json" at the root of your home directory and copy/paste the contents of your cloud key into it
+3) make sure you update the config portion within tutorial.js to your projects information
+4) don't actually run the thing yet, right now it goes crazy and puts you at your quota limits by filling the datastore with junk data REALLY quickly. TODO.. uh, fix that
 
 ## Setup and configuration
 
