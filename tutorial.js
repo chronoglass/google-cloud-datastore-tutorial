@@ -1,31 +1,37 @@
-//var colors = require('colors');
-var util = require('util');
-
+//var fs = require('fs'); // using FS to read json keyfile
 /* CONFIGURATION */
 var config = {
-	gcpProjectId: '',
-	gcpPubSubSubscriptionName: '',
-	gcpServiceAccountKeyFilePath: './gcp_private_key.json'
+	gcpProjectId: '<prodid>',
+	gcpPubSubSubscriptionName: '<SubName>',
+	gcpServiceAccountKeyFilePath: '<where yo key>',
 }
 _checkConfig();
 /* END CONFIGURATION */
-console.log('Authenticating with Google Cloud...')
-var gcloud = require('google-cloud')({
-    projectId: config.gcpProjectId,
-	keyFilename: config.gcpServiceAccountKeyFilePath,
+//console.log('Authenticating with Google Cloud...')
+//var gcloud = require('google-cloud')({
+//    projectId: config.gcpProjectId,
+//	keyFilename: config.gcpServiceAccountKeyFilePath,
+//});
+//console.log('Authentication successful!')
+
+
+var Datastore = require('@google-cloud/datastore');
+var Pubsub = require('@google-cloud/pubsub');
+
+var datastore = new Datastore({
+	projectId: config.gcpProjectId,
+	keyFilename: config.gcpServiceAccountKeyFilePath
 });
-console.log('Authentication successful!')
 
 
-var datastore = gcloud.datastore();
-var pubsub = gcloud.pubsub();
-
+var pubsub = new Pubsub();
 
 var subscription = pubsub.subscription(config.gcpPubSubSubscriptionName);
 
 
 function storeEvent(message) {
     var key = datastore.key('ParticleEvent');
+    //console.log("in store event\n");
 
     datastore.save({
         key: key,
