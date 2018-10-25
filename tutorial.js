@@ -6,13 +6,6 @@ var config = {
 	gcpServiceAccountKeyFilePath: '<where yo key>',
 }
 _checkConfig();
-/* END CONFIGURATION */
-//console.log('Authenticating with Google Cloud...')
-//var gcloud = require('google-cloud')({
-//    projectId: config.gcpProjectId,
-//	keyFilename: config.gcpServiceAccountKeyFilePath,
-//});
-//console.log('Authentication successful!')
 
 
 var Datastore = require('@google-cloud/datastore');
@@ -23,15 +16,16 @@ var datastore = new Datastore({
 	keyFilename: config.gcpServiceAccountKeyFilePath
 });
 
-
-var pubsub = new Pubsub();
+var pubsub = new Pubsub({
+	  projectId: config.gcpProjectId,
+	  keyFilename: config.gcpServiceAccountKeyFilePath,
+	});
 
 var subscription = pubsub.subscription(config.gcpPubSubSubscriptionName);
-
+console.log(subscription);
 
 function storeEvent(message) {
     var key = datastore.key('ParticleEvent');
-    //console.log("in store event\n");
 
     datastore.save({
         key: key,
